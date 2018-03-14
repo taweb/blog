@@ -9,6 +9,7 @@ class Form extends Component {
     constructor(props) {
         super(props);
         this.submit = this.submit.bind(this);
+        this.onClick = this.onClick.bind(this);
         this.state = {
             fields: props.fields.slice(),
         }
@@ -35,6 +36,21 @@ class Form extends Component {
 
     }
 
+    onClick(e) {
+        e.preventDefault(); 
+
+        let id = this.props.id;
+        console.log("this is the edit id", id);
+        let data = this.state.fields.reduce((data, field) => {
+            data[field.name] = field.value;
+            return data;
+        }, {});
+        data.id = id;
+
+        this.props.onEditClick(data);
+
+    }
+
     render() {
         const { className, button } = this.props;
 
@@ -49,7 +65,7 @@ class Form extends Component {
                         onChange={ e => this.change(e, i) }
                     />
                 ))}
-                <button disabled={ this.disabled() } className="btn btn-success">{ button }</button>
+                <button onClick={ this.onClick } disabled={ this.disabled() } className="btn btn-success">{ button }</button>
             </form>
         );
     }

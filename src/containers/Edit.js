@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import Edit from "../components/Articles/Edit";
+import { editArticle } from "../data/actions";
 
 // the second argument passed to mapStateToProps represent the props passed in from the parent
 
@@ -26,9 +27,16 @@ const mapStateToProps = (state, { id }) => {
 
     return {
         fields: fields,
+        id: id,
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onEditClick: data => dispatch(editArticle(data)),
     };
 };
 
 // connect up mapStateToProps with the Article component
 // Article's props are now controlled by this file
-export default connect(mapStateToProps)(Edit);
+export default connect(mapStateToProps, mapDispatchToProps)(Edit);
