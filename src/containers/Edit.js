@@ -8,12 +8,21 @@ import Edit from "../components/Articles/Edit";
 const mapStateToProps = (state, { id }) => {
 
 	const articles = state.get("articles");
+
     const article = articles.find(a => a.get("id") === +id);
 
-	const fields = [
-	    { name: "title", label: "Title", value: article.get("title") },
-	    { name: "article", label: "Article", value: article.get("article") },
-	];
+    let fields = null;
+
+    if(article){
+    	fields = [
+		    { name: "title", label: "Title", value: article.get("title") },
+		    { name: "article", label: "Article", value: article.get("article") },
+		   	{ name: "tags", label: "Tags", value: article.get("tags").join(", ") },
+		];
+    }else{
+    	fields = null;
+    }
+
 
     return {
         fields: fields,
