@@ -8,7 +8,7 @@ import Input from "./Input";
 class Form extends Component {
     constructor(props) {
         super(props);
-
+        this.submit = this.submit.bind(this);
         this.state = {
             fields: props.fields.slice(),
         }
@@ -24,11 +24,22 @@ class Form extends Component {
         return !this.state.fields.every(({ value }) => value);
     }
 
+    submit(e) {
+        e.preventDefault();
+        let data = this.state.fields.reduce((data, field) => {
+            data[field.name] = field.value;
+            return data;
+        }, {});
+
+        this.props.onSubmit(data);
+
+    }
+
     render() {
         const { className, button } = this.props;
 
         return (
-            <form className={ "form" + (className ? " " + className : "") } >
+            <form onSubmit={ this.submit } className={ "form" + (className ? " " + className : "") } >
                 { this.state.fields.map(({ name, label, value }, i) => (
                     <Input
                         key={ i }
