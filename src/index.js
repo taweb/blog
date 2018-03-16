@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {createStore} from "redux";
 import {Provider} from "react-redux";
+import { createStore, applyMiddleware, compose } from "redux";
+import thunk from "redux-thunk";
 
 // import the Router component
 import { BrowserRouter as Router } from "react-router-dom";
@@ -15,13 +16,8 @@ import App from "./App";
 // import in Immutable Map and List for our dummy data
 import { Map, List } from "immutable";
 
-
-
-const store = createStore(
-    reducer,
-    initial,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducer, initial, composeEnhancers(applyMiddleware(thunk)));
 
 // wrap the app in Router
 // pass our articles through to App using props
