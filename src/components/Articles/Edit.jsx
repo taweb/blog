@@ -10,7 +10,7 @@ const Edit = ({ fields, id, onEditClick }) => (
         { /* allows us to set HTML inside an element */ }
         {/*<div dangerouslySetInnerHTML={{ __html: article.get("article") }} />*/}
 
-        {fields ? <Form className="panel-body" onEditClick={ onEditClick } fields={ fields } id={ id } button="Edit Article" /> : <FourOhFour />}
+        {fields ? <Form className="panel-body" onSubmit={ onEditClick } fields={ fields } id={ id } button="Edit Article" /> : <FourOhFour />}
     </div>
 );
 

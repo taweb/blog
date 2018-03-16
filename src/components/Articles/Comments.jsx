@@ -9,9 +9,9 @@ const fields = [
 ];
 
 // comments passed in by the parent
-const Comments = ({ comments }) => (
+const Comments = ({ comments, onAddComment, id }) => ( 
     <div>
-        <h2>Comments</h2>
+        <h2>Comments</h2> 
 
         <ul className="list-group">
             { /* loop over all the comments */ }
@@ -26,9 +26,9 @@ const Comments = ({ comments }) => (
         <div className="panel panel-default">
             <div className="panel-heading">Add Comment</div>
             { /* pass through fields, button and also a className prop */ }
-            <Form className="panel-body" fields={ fields } button="Add Comment" />
+            <Form onSubmit= { onAddComment } className="panel-body" fields={ fields } button="Add Comment" />
         </div>
     </div>
-);
+); 
 
 export default Comments;

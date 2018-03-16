@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"; 
 
 import FourOhFour from "../FourOhFour";
 
@@ -7,7 +7,7 @@ import Tags from "./Tags";
 import Comments from "./Comments";
 
 // if article isn't passed in, that means it's an invalid id, so show FourOhFour
-const Article = ({ article, onDeleteClick }) => !article ? <FourOhFour /> : (
+const Article = ({ article, onDeleteClick, onAddComment }) => !article ? <FourOhFour /> : (
     <div>
         { /* the edit/delete buttons  */ }
         <Actions onDeleteClick={ onDeleteClick } article={ article } />
@@ -20,10 +20,10 @@ const Article = ({ article, onDeleteClick }) => !article ? <FourOhFour /> : (
         { /* use the Tags component to show the tags */ }
         <Tags tags={ article.get("tags") } />
 
-        <hr />
+        <hr /> 
 
         { /* use the comments component */ }
-        <Comments comments={ article.get("comments") } />
+        <Comments onAddComment={ onAddComment } comments={ article.get("comments") } />
     </div>
 );
 
