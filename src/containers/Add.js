@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Add from "../components/Articles/Add";
-import { addArticle } from "../data/actions/state"; 
+import { postArticle } from "../data/actions/api"; 
 
 // the second argument passed to mapStateToProps represent the props passed in from the parent
 
@@ -21,7 +21,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onSubmit: data => dispatch(addArticle(data)),
+		onSubmit: data => dispatch(postArticle(data)),
 	};
 };
 

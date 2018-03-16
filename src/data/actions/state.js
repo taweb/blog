@@ -44,3 +44,10 @@ export const setArticles = articles => {
         articles: articles,
     };
 };
+
+// export const addArticle = article => {
+//     return {
+//         type: "setArticles",
+//         article: article,
+//     };
+// };

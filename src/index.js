@@ -14,7 +14,7 @@ import initial from "./data/initial.js";
 import App from "./App";
 
 // import in Immutable Map and List for our dummy data
-import { Map, List } from "immutable";
+// import { Map, List } from "immutable";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducer, initial, composeEnhancers(applyMiddleware(thunk)));

@@ -3,19 +3,19 @@ import { Map, List } from "immutable";
 
 // need to track the last ID used
 // we've got two dummy items, so start at 2
-let lastID = 2; 
+// let lastID = 2; 
 
 // create a function that returns a new article Map
-const createArticle = ({ title, article }) => {
+const createArticle = ({ id, title, article, tags }) => {
     // up the ID by 1 every time
-    lastID += 1;
+    // lastID += 1;
 
     return Map({
-        id: lastID, 
+        id: id, 
         title: title,
         article: article,
         comments: List(),
-        tags: List(),
+        tags: tags,
     });
 };
 
@@ -24,15 +24,15 @@ const addArticleData = (state, data) => state.update("articles", articles => art
 
 const editArticleData = (state, data) => state.update("articles", articles => 
     articles.map(article => 
-    (article.get("id") == data.id) ? article.set("title", data.title).set("article", data.article).set("tags", data.tags) : article));
+    (article.get("id") === data.id) ? article.set("title", data.title).set("article", data.article).set("tags", data.tags) : article));
 
 const addCommentData = (state, data) =>
     state.update("articles", articles =>
     articles.map(article => 
-        (article.get("id") == data.id) ? article.update("comments", comments => comments.push(Map({email: data.email, comment: data.comment}))) : article));
+        (article.get("id") === data.id) ? article.update("comments", comments => comments.push(Map({email: data.email, comment: data.comment}))) : article));
 // console.log(data);
 
-const setArticles = (state, { articles }) => state.set("articles", articles);
+const setArticles = (state, { articles }) => state.set("titles", articles);
 
 const deleteArticleFn = (state, object ) => state.update("articles", articles => articles.filter(article => article.get("id") !== object.id ));
 
