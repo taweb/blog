@@ -12,7 +12,7 @@ export const getArticles = () => dispatch => {
         const articles = fromJS(response.data);
 
         // dispatch the setArticles action, passing along the articles List
-        let action = setArticles(articles)
+        let action = setArticles(articles);
         dispatch(action);
         // console.log(response.data);
     });
@@ -33,4 +33,16 @@ export const postArticle = ({ title, article, tags }) => dispatch => {
 
         // console.log(response.data);
 
+};
+
+export const getArticle = ({ id }) => dispatch => {
+    axios.get("/articles/id").then(response => {
+        // wrap the response.data with fromJS to convert it into an Immutable List
+        const article = fromJS(response.data);
+
+        // dispatch the setArticles action, passing along the articles List
+        let action = setArticles(article);
+        dispatch(action);
+        // console.log(response.data);
+    });
 };
