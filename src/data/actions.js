@@ -27,7 +27,7 @@ export const editArticle = ({ id, title, article, tags }) => {
 	};
 };
 
-export const addComment = ({ email, comment, id }) => {
+export const addComment = ({ email, comment }, id ) => {
 
 	return {
 		type: "addComment",

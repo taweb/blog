@@ -14,10 +14,10 @@ const mapStateToProps = (state, { id }) => {
     };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, { id }) => {
 	return {
 		onDeleteClick: id => dispatch(deleteArticle(id)),
-		onAddComment: (data) => dispatch(addComment(data)),
+		onAddComment: data => dispatch(addComment(data, id)),
 	};
 };
 

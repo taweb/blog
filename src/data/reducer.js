@@ -30,7 +30,7 @@ const addCommentData = (state, data) =>
     // state.update("articles", articles =>
     // articles.map(article =>
     //     (article.get("id") == data.id) ? article.comments.push(data) : article));
-console.log(state);
+console.log(data);
 
 
 const deleteArticleFn = (state, object ) => state.update("articles", articles => articles.filter(article => article.get("id") !== object.id ));
